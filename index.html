@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QR-Code-Generator</title>
+  <script type="module" src="/src/index.js"></script>
+  <style>
+    easy-form {
+      display:block;
+      width: 20em;
+    }
+    easy-form input, easy-form textarea, easy-form input[type="submit"] {
+      display:block;
+      width:100%;
+      margin-bottom: 0.5em;
+    }
+
+    easy-form input[type="submit"]{
+      width:calc(100% + 6pt);
+      display:block;
+      padding:8pt;
+    }
+
+    easy-form textarea {
+      width:calc(100% + 1.5pt);
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <easy-form>
+    <input type="URL" name="root_url" placeholder="Root URL"/>
+    <input type="text" name="title" />
+    <textarea name="description">Description</textarea>
+    <input type="submit" />
+  </easy-form>
+
+  <main>
+    
+
+  </main>
+</body>
+</html>
