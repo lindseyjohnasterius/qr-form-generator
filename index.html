@@ -5,42 +5,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>QR-Code-Generator</title>
   <script type="module" src="/src/index.js"></script>
-  <style>
-    easy-form {
-      display:block;
-      width: 20em;
-    }
-    easy-form input, easy-form textarea, easy-form input[type="submit"] {
-      display:block;
-      width:100%;
-      margin-bottom: 0.5em;
-    }
-
-    easy-form input[type="submit"]{
-      width:calc(100% + 6pt);
-      display:block;
-      padding:8pt;
-    }
-
-    easy-form textarea {
-      width:calc(100% + 1.5pt);
-    }
-
-
-  </style>
 </head>
+
+<style>
+  main {
+    width: 4in;
+    columns: 2;
+  }
+
+  qr-code a {
+    display: none;
+  }
+
+  qr-code {
+    margin:0;
+    padding:0;
+  }
+
+  qr-code img {
+    width: 1.8in;
+    height: 1.8in;
+    display: block;
+  }
+
+  @media print {
+    easy-form {
+      display: none;
+    }
+  }
+
+
+</style>
 <body>
 
-  <easy-form>
-    <input type="URL" name="root_url" placeholder="Root URL"/>
-    <input type="text" name="title" />
-    <textarea name="description">Description</textarea>
-    <input type="submit" />
+  <easy-form id="easy_form">
+    <input type="text" name="base-url" id="base_url" placeholder="base url">
+    <input type="text" name="id" id="uuid_input" placeholder="uuid">
+    <input type="submit">
   </easy-form>
+  <main id="main_el"></main>
 
-  <main>
-    
+  <script>
 
-  </main>
+    uuid_input.value = self.crypto.randomUUID();
+  
+    easy_form.addEventListener('submit', function(e){
+      uuid_input.value = self.crypto.randomUUID();
+      const qr_code = document.createElement('qr-code');
+      qr_code.setAttribute('value', `${base_url.value}?&id=${uuid_input.value}`);
+      main_el.appendChild(qr_code);
+    });
+
+
+</script>
+
+
 </body>
 </html>
