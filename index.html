@@ -33,11 +33,8 @@
       display: none;
     }
   }
-
-
 </style>
 <body>
-
   <easy-form id="easy_form">
     <p>This app is for generating 4" x 6" labels with 6 QR Codes each label</p>
     <input type="text" name="base-url" id="base_url" placeholder="base url">
@@ -45,9 +42,7 @@
     <input type="submit">
   </easy-form>
   <main id="main_el"></main>
-
   <script>
-
     uuid_input.value = self.crypto.randomUUID();
   
     easy_form.addEventListener('submit', function(e){
@@ -56,10 +51,6 @@
       qr_code.setAttribute('value', `${base_url.value}?&id=${uuid_input.value}`);
       main_el.appendChild(qr_code);
     });
-
-
-</script>
-
-
+  </script>
 </body>
 </html>
