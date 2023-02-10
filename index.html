@@ -4,7 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>QR-Code-Generator</title>
-  <script type="module" src="./src/index.js"></script>
+  <script src="https://lindseyjohnasterius.github.io/qr-code-element/qr-code.js"></script>
+  <script src="https://lindseyjohnasterius.github.io/easy-form-component/index.js"></script>
+
 </head>
 
 <style>
@@ -43,10 +45,17 @@
   </easy-form>
   <main id="main_el"></main>
   <script>
+    const base_url_value = localStorage.getItem("base-url." + window.location.host);
+    if(base_url_value !== null){
+      base_url.value = base_url_value;
+    }
+
     uuid_input.value = self.crypto.randomUUID();
   
     easy_form.addEventListener('submit', function(e){
       uuid_input.value = self.crypto.randomUUID();
+      localStorage.setItem("base-url." + window.location.host, base_url.value);
+
       const qr_code = document.createElement('qr-code');
       qr_code.setAttribute('value', `${base_url.value}?&id=${uuid_input.value}`);
       main_el.appendChild(qr_code);
